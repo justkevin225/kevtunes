@@ -547,7 +547,7 @@ const App = () => {
                 onQuery === false
                   ? "-translate-y-[200] opacity-0 invisible"
                   : "-translate-y-full opacity-1 visible"
-              } transition-all h-[250px] w-5/6 sm:w-full overflow-auto duration-300 absolute top-0 right-0 bg-black/50 border border-white backdrop-blur-sm p-3 rounded-md text-xs`}
+              } transition-all h-[250px] mx-auto w-5/6 sm:w-full overflow-auto duration-300 absolute top-0 right-0 bg-black/50 border border-white backdrop-blur-sm p-3 rounded-md text-xs`}
             >
               {searchResults ? (
                 <div className="flex flex-col gap-2">
