@@ -1,5 +1,5 @@
 const CLIENT_ID = "b5712a327f2e475a863e5b3560c6bbe9";
-const REDIRECT_URI = "http://localhost:5173/kevtunes/";
+const REDIRECT_URI = "http://justkevin225.github.io/kevtunes/";
 
 const authEndpoint = "https://accounts.spotify.com/authorize";
 const responseType = "token";
