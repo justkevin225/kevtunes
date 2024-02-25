@@ -138,7 +138,11 @@ const App = () => {
       // le jeton d'accès et l'heure d'expiration de votre application
 
       // Vérifier si le jeton d'accès est expiré
-      if (Date.now() >= parseInt(localStorage.getItem("expiresIn"))) {
+      if (
+        Date.now() >=
+        parseInt(localStorage.getItem("tokenCreatedOn")) +
+          parseInt(localStorage.getItem("expiresIn"))
+      ) {
         // Si le jeton d'accès est expiré, on le rafraîchis
         refreshAuthToken(localStorage.getItem("refreshToken"));
       }
@@ -188,8 +192,7 @@ const App = () => {
   };
 
   const handleLoadedMetaData = () => {
-
-    // Pour patcher un bug 
+    // Pour patcher un bug
     if (track) {
       try {
         setCurrentSongSrc(track.preview_url);
@@ -270,6 +273,7 @@ const App = () => {
     if (hash) {
       const token = parseAuthToken(hash);
       setAuthToken(token);
+      localStorage.setItem("tokenCreatedOn", Date.now());
       localStorage.setItem("authToken", token);
       localStorage.setItem("refreshToken", parseRefreshToken(hash));
       localStorage.setItem("expiresIn", parseExpiresIn(hash));
@@ -543,7 +547,7 @@ const App = () => {
                 onQuery === false
                   ? "-translate-y-[200] opacity-0 invisible"
                   : "-translate-y-full opacity-1 visible"
-              } transition-all h-[250px] w-full overflow-auto duration-300 absolute top-0 right-0 bg-black/50 border border-white backdrop-blur-sm p-3 rounded-md text-xs`}
+              } transition-all h-[250px] w-5/6 sm:w-full overflow-auto duration-300 absolute top-0 right-0 bg-black/50 border border-white backdrop-blur-sm p-3 rounded-md text-xs`}
             >
               {searchResults ? (
                 <div className="flex flex-col gap-2">
